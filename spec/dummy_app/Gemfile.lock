@@ -1,0 +1,23 @@
+PATH
+  remote: ../..
+  specs:
+    sync_files (0.1.0)
+      httparty
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    httparty (0.21.0)
+      mini_mime (>= 1.0.0)
+      multi_xml (>= 0.5.2)
+    mini_mime (1.1.2)
+    multi_xml (0.6.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  sync_files!
+
+BUNDLED WITH
+   2.0.2
