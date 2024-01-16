@@ -20,6 +20,8 @@ Or install it yourself as:
 
 ## Usage
 
+Create a `config/sync_files.yml` or `.sync_files.yml` file with content similar to the following:
+
 ```
 groups:
   - settings:
@@ -28,6 +30,15 @@ groups:
       - filename: "cnn_frontpage.html"
         url: "https://cnn.com"
 ```
+
+The destination setting is where the HTML files will be written. The fixtures array contains a list of fixtures to be written. Each fixture has a filename and a url. The filename is the name of the file to be written. The url is the URL of the web page to be fetched and written to the file.
+
+To synchronize the files, run the following command:
+
+```
+bundle exec rake sync_files:all
+```
+
 
 ## Development
 
