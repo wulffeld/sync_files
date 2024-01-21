@@ -7,6 +7,7 @@ require "sync_files/config/facade"
 require "sync_files/config/loader"
 require "sync_files/config/parser"
 require "sync_files/config/validation"
+require "sync_files/fixtures/process"
 require "sync_files/engine"
 
 module SyncFiles
@@ -25,17 +26,9 @@ module SyncFiles
 
     def process_fixtures
       @facade.iterate do |filename, url, destination|
-        puts "Getting fixtures: #{url} #{filename}"
+        puts "Fetching fixtures: #{url} #{filename}"
 
-        response = HTTParty.get(url)
-        if response.code != 200
-          puts "ERROR: #{response.code} #{response.message} for #{url}"
-          next
-        end
-
-        open(File.join(::Rails.root.to_s, destination, filename), "wb") do |file|
-          file << response.body
-        end
+        SyncFiles::Fixtures::Process.new(filename: filename, url: url, destination: destination).run
       end
     end
   end
