@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sync_files (0.1.0)
+    sync_files (0.2.0)
       httparty
 
 GEM
