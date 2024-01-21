@@ -16,6 +16,7 @@ module SyncFiles
       end
 
       def validate!
+        raise Invalid.new("ERROR: No config file found. Please create one of the following files: #{CONFIG_FILENAMES.join(", ")}") unless @config
         raise Invalid.new("ERROR: No groups specified in the config file.") unless validate_groups
         raise Invalid.new("ERROR: No files specified in the config file.") unless validate_fixtures
         raise Invalid.new("ERROR: No destination specified in the config file.") unless validate_settings

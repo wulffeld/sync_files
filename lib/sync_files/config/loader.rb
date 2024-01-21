@@ -9,11 +9,7 @@ module SyncFiles
       attr_reader :config
 
       def initialize
-        if config_filename
-          @config = YAML.load(File.read(config_filename))
-        else
-          puts "ERROR: No config file found. Please create one of the following files: #{CONFIG_FILENAMES.join(", ")}"
-        end
+        @config = YAML.load(File.read(config_filename)) if config_filename
       end
 
       def has_config?
